@@ -6,7 +6,12 @@
 {{> header }}
 {{> offcanvas }}
 
-{{{ body }}}
+<div id="smooth-wrapper">
+    <div id="smooth-content">
+        {{{ body }}}
+        {{> footer }}
+    </div>
+</div>
 
 {{> scroll_to_top }}
 {{> script_tag }}

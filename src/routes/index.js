@@ -1,8 +1,9 @@
+import { exec } from 'child_process'
+import site from './site.js'
+
 function registerRoutes(app)
 {
-    app.get('/', function (req, res) {
-        res.render('index')
-    })
+    app.use('/', site)
 
 }
 

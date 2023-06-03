@@ -1,4 +1,5 @@
 import express from 'express'
+import session from 'express-session'
 import methodOverride from 'method-override'
 import { engine } from 'express-handlebars'
 import registerRoutes from '../routes/index.js'
@@ -16,6 +17,12 @@ function bootstrap(app)
     app.set('views', './src/resources/views')
 
     app.use(methodOverride('_method'))
+
+    app.use(session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: true
+    }))
 
     connectDatabase()
     registerRoutes(app)

@@ -1,6 +1,6 @@
-import bootstrap from './providers/bootstrap.js'
+import dotenv from './config/env.js'
 import express from 'express'
-import 'dotenv/config'
+import bootstrap from './providers/bootstrap.js'
 
 const app = express()
 

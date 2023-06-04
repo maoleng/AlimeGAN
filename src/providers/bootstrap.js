@@ -4,6 +4,8 @@ import methodOverride from 'method-override'
 import { engine } from 'express-handlebars'
 import registerRoutes from '../routes/index.js'
 import connectDatabase from '../config/database.js'
+import passport from 'passport'
+import initializePassport from './passport.js'
 
 function bootstrap(app)
 {
@@ -23,6 +25,9 @@ function bootstrap(app)
         resave: false,
         saveUninitialized: true
     }))
+
+    initializePassport(passport)
+    app.use(passport.session())
 
     connectDatabase()
     registerRoutes(app)

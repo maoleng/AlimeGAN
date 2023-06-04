@@ -4,7 +4,8 @@ import User from '../../Models/User.js'
 class AuthController extends BaseController
 {
 
-    static async callback (accessToken, refreshToken, profile, done) {
+    static async callback (accessToken, refreshToken, profile, done)
+    {
         const auth = {
             name: profile.displayName,
             email: profile.emails[0].value,
@@ -19,7 +20,13 @@ class AuthController extends BaseController
         await User.updateOne({email: auth.email}, auth)
 
         return done(null, user)
+    }
 
+    static logout(req, res)
+    {
+        req.session.authed = null
+
+        res.redirect('/')
     }
 
 }

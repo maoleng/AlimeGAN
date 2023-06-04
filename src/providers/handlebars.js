@@ -10,7 +10,7 @@ function boosterHandlebars(app)
                 },
                 isAlreadyLogin: () => {
                     const authed = req.session.authed
-                    console.log('from helper', authed)
+
                     return authed !== null && authed !== undefined
                 },
                 authedName: () => {

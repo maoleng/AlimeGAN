@@ -58,29 +58,32 @@
                                 </li>
                             </ul>
                         </div>
-<!--                        <div class="nav__uncollapsed">-->
-<!--                            <div class="nav__uncollapsed-item d-none d-md-flex">-->
-<!--                                <button type="submit" class="btn btn--secondary"><img src="assets/images/google.png" alt="Image"> continue with google</button>-->
-<!--                            </div>-->
-<!--                        </div>-->
-                        <div class="nav__uncollapsed nav__menu-item--dropdown">
-                            <button aria-label="dropdown menu container" class="nav__menu-link nav__menu-link--dropdown">
-                                Hello Bui Huu Loc
-                            </button>
-                            <ul class="nav__dropdown">
-                                <li>
-                                    <a class="nav__dropdown-item hide-nav" href="portfolio.html">Your work</a>
-                                </li>
-                                <li>
-                                    <a class="nav__dropdown-item hide-nav" href="portfolio.html">Logout</a>
-                                </li>
-                            </ul>
-                            <button class="nav__bar d-block d-xl-none">
-                                <span class="icon-bar top-bar"></span>
-                                <span class="icon-bar middle-bar"></span>
-                                <span class="icon-bar bottom-bar"></span>
-                            </button>
-                        </div>
+                        {{#if (isAlreadyLogin)}}
+                            <div class="nav__uncollapsed nav__menu-item--dropdown">
+                                <button aria-label="dropdown menu container" class="nav__menu-link nav__menu-link--dropdown">
+                                    Hello {{ authedName }}
+                                </button>
+                                <ul class="nav__dropdown">
+                                    <li>
+                                        <a class="nav__dropdown-item hide-nav" href="portfolio.html">Your work</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav__dropdown-item hide-nav" href="/logout">Logout</a>
+                                    </li>
+                                </ul>
+                                <button class="nav__bar d-block d-xl-none">
+                                    <span class="icon-bar top-bar"></span>
+                                    <span class="icon-bar middle-bar"></span>
+                                    <span class="icon-bar bottom-bar"></span>
+                                </button>
+                            </div>
+                        {{else}}
+                            <div class="nav__uncollapsed">
+                                <div class="nav__uncollapsed-item d-none d-md-flex">
+                                    <a href="/auth/redirect" type="submit" class="btn btn--secondary"><img src="assets/images/google.png" alt="Image"> continue with google</a>
+                                </div>
+                            </div>
+                        {{/if}}
                     </div>
                 </nav>
             </div>

@@ -16,10 +16,10 @@ export default function (passport) {
     )
 
     passport.serializeUser((user, done) => {
-        done(null, user.id)
+        done(null, user)
     })
 
-    passport.deserializeUser((id, done) => {
-
+    passport.deserializeUser((user, done) => {
+        done(null, user)
     })
 }

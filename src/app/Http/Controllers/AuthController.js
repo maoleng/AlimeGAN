@@ -1,6 +1,5 @@
 import BaseController from './BaseController.js'
 import User from '../../Models/User.js'
-import {now} from "mongoose";
 
 class AuthController extends BaseController
 {
@@ -11,11 +10,9 @@ class AuthController extends BaseController
             email: profile.emails[0].value,
             avatar: profile.photos[0].value
         }
-        const user = await User.findOne({email: auth.email})
-        if (user === null) {
-            await User.create(auth)
-
-            return done(null, user)
+        let user = await User.findOne({email: auth.email})
+        if (user === null || user === undefined) {
+            return done(null, await User.create(auth))
 
         }
         auth.lastLoginAt = Date.now()

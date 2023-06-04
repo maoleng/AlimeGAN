@@ -6,6 +6,7 @@ import registerRoutes from '../routes/index.js'
 import connectDatabase from '../config/database.js'
 import passport from 'passport'
 import initializePassport from './passport.js'
+import boosterHandlebars from "./handlebars.js";
 
 function bootstrap(app)
 {
@@ -14,9 +15,7 @@ function bootstrap(app)
 
     app.use(express.static('src/public'))
 
-    app.engine('handlebars', engine())
-    app.set('view engine', 'handlebars')
-    app.set('views', './src/resources/views')
+    boosterHandlebars(app)
 
     app.use(methodOverride('_method'))
 

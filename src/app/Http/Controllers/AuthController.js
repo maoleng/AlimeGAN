@@ -1,16 +1,28 @@
 import BaseController from './BaseController.js'
+import User from '../../Models/User.js'
+import {now} from "mongoose";
 
 class AuthController extends BaseController
 {
 
     static async callback (accessToken, refreshToken, profile, done) {
-        const newUser = {
-            googleId: profile.id,
-            displayName: profile.displayName,
-            image: profile.photos[0].value,
-            email: profile.emails[0].value
+        const auth = {
+            name: profile.displayName,
+            email: profile.emails[0].value,
+            avatar: profile.photos[0].value
         }
-        console.log(newUser)
+        const user = await User.findOne({email: auth.email})
+        if (user === null) {
+            await User.create(auth)
+
+            return done(null, user)
+
+        }
+        auth.lastLoginAt = Date.now()
+        await User.updateOne({email: auth.email}, auth)
+
+        return done(null, user)
+
     }
 
 }

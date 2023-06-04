@@ -21,9 +21,13 @@ const user = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-    }
+    },
+    lastLoginAt: {
+        type: Date,
+        default: Date.now,
+    },
 }, {
-    collection: 'courses',
+    collection: 'users',
 })
 
 class User extends Base

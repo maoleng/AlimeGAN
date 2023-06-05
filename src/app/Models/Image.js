@@ -4,7 +4,6 @@ import mongoose from 'mongoose'
 const image = new mongoose.Schema({
     label: {
         type: String,
-        required: false,
     },
     path: {
         type: String,
@@ -20,13 +19,10 @@ const image = new mongoose.Schema({
     },
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        default: false,
         ref: 'User',
     },
-    imageOriginalId: {
-        type: mongoose.Schema.Types.ObjectId,
-        default: false,
-        ref: 'Image',
+    imageOriginalPath: {
+        type: String,
     },
     createdAt: {
         type: Date,

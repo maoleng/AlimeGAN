@@ -4,5 +4,8 @@ import ConvertController from '../app/Http/Controllers/ConvertController.js'
 const route = express.Router()
 
 route.get('/', ConvertController.index)
+route.post('/', ConvertController.convert)
+route.get('/result', ConvertController.showResult)
+
 
 export default route

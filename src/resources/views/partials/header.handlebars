@@ -6,7 +6,7 @@
                     <div class="nav__content">
                         <div class="nav__logo">
                             <a href="/">
-                                <img src="assets/images/logo.png" alt="Logo">
+                                <img src="{{ asset 'assets/images/logo.png' }}" alt="Logo">
                             </a>
                             <button aria-label="open sidebar" class="sidedot">
                                 <span></span><span></span><span></span><span></span>
@@ -15,7 +15,7 @@
                         <div class="nav__menu">
                             <div class="nav__menu-logo d-flex d-xl-none">
                                 <a href="/" class="text-center hide-nav">
-                                    <img src="assets/images/logo.png" alt="Logo">
+                                    <img src="{{ asset 'assets/images/logo.png' }}" alt="Logo">
                                 </a>
                                 <a href="javascript:void(0)" class="nav__menu-close">
                                     <i class="fa-solid fa-xmark"></i>
@@ -80,7 +80,7 @@
                         {{else}}
                             <div class="nav__uncollapsed">
                                 <div class="nav__uncollapsed-item d-none d-md-flex">
-                                    <a href="/auth/redirect" type="submit" class="btn btn--secondary"><img src="assets/images/google.png" alt="Image"> continue with google</a>
+                                    <a href="/auth/redirect" type="submit" class="btn btn--secondary"><img src="{{ asset 'assets/images/google.png' }}" alt="Image"> continue with google</a>
                                 </div>
                             </div>
                         {{/if}}

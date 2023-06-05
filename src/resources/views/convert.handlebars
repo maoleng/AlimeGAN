@@ -36,35 +36,35 @@
                 <div class="quote-wrapper">
                     <div class="custom-quote__left custom-quote__left1">
                         <div class="single">
-                            <img src="assets/images/quote/one.png" alt="Image">
+                            <img src="{{ asset 'assets/images/quote/one.png' }}" alt="Image">
                         </div>
                         <div class="single">
-                            <img src="assets/images/quote/two.png" alt="Image">
+                            <img src="{{ asset 'assets/images/quote/two.png' }}" alt="Image">
                         </div>
                         <div class="single">
-                            <img src="assets/images/quote/three.png" alt="Image">
+                            <img src="{{ asset 'assets/images/quote/three.png' }}" alt="Image">
                         </div>
                     </div>
                     <div class="custom-quote__left custom-quote__left2">
                         <div class="single">
-                            <img src="assets/images/quote/one.png" alt="Image">
+                            <img src="{{ asset 'assets/images/quote/one.png' }}" alt="Image">
                         </div>
                         <div class="single">
-                            <img src="assets/images/quote/two.png" alt="Image">
+                            <img src="{{ asset 'assets/images/quote/two.png' }}" alt="Image">
                         </div>
                         <div class="single">
-                            <img src="assets/images/quote/three.png" alt="Image">
+                            <img src="{{ asset 'assets/images/quote/three.png' }}" alt="Image">
                         </div>
                     </div>
                     <div class=" custom-quote__left custom-quote__left3">
                         <div class="single">
-                            <img src="assets/images/quote/one.png" alt="Image">
+                            <img src="{{ asset 'assets/images/quote/one.png' }}" alt="Image">
                         </div>
                         <div class="single">
-                            <img src="assets/images/quote/two.png" alt="Image">
+                            <img src="{{ asset 'assets/images/quote/two.png' }}" alt="Image">
                         </div>
                         <div class="single">
-                            <img src="assets/images/quote/three.png" alt="Image">
+                            <img src="{{ asset 'assets/images/quote/three.png' }}" alt="Image">
                         </div>
                     </div>
                 </div>
@@ -73,46 +73,46 @@
                 <div class="quote-wrapper">
                     <div class="custom-quote__right custom-quote__right1">
                         <div class="single">
-                            <img src="assets/images/quote/four.png" alt="Image">
+                            <img src="{{ asset 'assets/images/quote/four.png' }}" alt="Image">
                         </div>
                         <div class="single">
-                            <img src="assets/images/quote/five.png" alt="Image">
+                            <img src="{{ asset 'assets/images/quote/five.png' }}" alt="Image">
                         </div>
                         <div class="single">
-                            <img src="assets/images/quote/six.png" alt="Image">
+                            <img src="{{ asset 'assets/images/quote/six.png' }}" alt="Image">
                         </div>
                     </div>
                     <div class="custom-quote__right custom-quote__right2">
                         <div class="single">
-                            <img src="assets/images/quote/four.png" alt="Image">
+                            <img src="{{ asset 'assets/images/quote/four.png' }}" alt="Image">
                         </div>
                         <div class="single">
-                            <img src="assets/images/quote/five.png" alt="Image">
+                            <img src="{{ asset 'assets/images/quote/five.png' }}" alt="Image">
                         </div>
                         <div class="single">
-                            <img src="assets/images/quote/six.png" alt="Image">
+                            <img src="{{ asset 'assets/images/quote/six.png' }}" alt="Image">
                         </div>
                     </div>
                     <div class="custom-quote__right custom-quote__right3">
                         <div class="single">
-                            <img src="assets/images/quote/four.png" alt="Image">
+                            <img src="{{ asset 'assets/images/quote/four.png' }}" alt="Image">
                         </div>
                         <div class="single">
-                            <img src="assets/images/quote/five.png" alt="Image">
+                            <img src="{{ asset 'assets/images/quote/five.png' }}" alt="Image">
                         </div>
                         <div class="single">
-                            <img src="assets/images/quote/six.png" alt="Image">
+                            <img src="{{ asset 'assets/images/quote/six.png' }}" alt="Image">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-xl-6">
                 <div class="trial__form">
-                    <form action="#" method="post">
+                    <form action="/convert" method="post" enctype="multipart/form-data">
                         <div class="drag">
                             <div class="avatar-upload">
                                 <div class="avatar-edit">
-                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                    <input name="file" type="file" id="imageUpload" accept=".png, .jpg, .jpeg" />
                                     <label for="imageUpload"></label>
                                 </div>
                                 <div class="avatar-preview">
@@ -121,16 +121,15 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="form-group-single wow fadeInUp" data-wow-duration="600ms" data-wow-delay="900ms">
-                            <input type="text" name="trail-link" id="trailLink" placeholder="label your image">
+                            <input type="text" name="label" id="trailLink" placeholder="label your image">
                         </div>
                         <div class="group-radio">
-                            <input type="checkbox" name="read-terms" id="readTerms">
+                            <input type="checkbox" name="isPublic" id="readTerms">
                             <label for="readTerms">Make it as public</label>
                         </div>
                         <div class="cta__group">
-                            <button class="btn btn--primary">convert now</button>
+                            <button id="btn-convert" class="btn btn--primary">convert now</button>
                         </div>
                     </form>
                 </div>
@@ -138,3 +137,23 @@
         </div>
     </div>
 </div>
+
+{{#section 'script'}}
+    <script>
+        $(document).ready(() => {
+            const btn = $('#btn-convert')
+            btn.on('click', (e) => {
+                e.preventDefault()
+                btn.addClass('disabled')
+                let text = 'Please wait'
+                setInterval(() => {
+                    if (text === 'Please wait....') {
+                        text = 'Please wait'
+                    }
+                    btn.text(text)
+                    text += '.'
+                }, 400)
+            })
+        })
+    </script>
+{{/section}}

@@ -1,12 +1,11 @@
 import express from 'express'
 import session from 'express-session'
 import methodOverride from 'method-override'
-import { engine } from 'express-handlebars'
 import registerRoutes from '../routes/index.js'
 import connectDatabase from '../config/database.js'
 import passport from 'passport'
 import initializePassport from './passport.js'
-import boosterHandlebars from "./handlebars.js";
+import boosterHandlebars from './handlebars.js'
 
 function bootstrap(app)
 {

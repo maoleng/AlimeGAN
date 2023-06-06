@@ -4,8 +4,8 @@ import torch
 from PIL import Image
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
-model = torch.hub.load("bryandlee/animegan2-pytorch:main", "generator", device=device).eval()
-face2paint = torch.hub.load("bryandlee/animegan2-pytorch:main", "face2paint", device=device)
+model = torch.hub.load("maoleng/AlimeGAN:main", "generator", device=device).eval()
+face2paint = torch.hub.load("maoleng/AlimeGAN:main", "face2paint", device=device)
 
 #@title Face Detector & FFHQ-style Alignment
 

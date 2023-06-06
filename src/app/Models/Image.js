@@ -37,4 +37,4 @@ class Image extends Base
 
 }
 
-export default mongoose.model('User', image.loadClass(Image))
+export default mongoose.model('Image', image.loadClass(Image))

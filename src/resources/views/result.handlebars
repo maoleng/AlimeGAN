@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+        }
+        .container {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .gradient-background {
+            background-image: url('{{ asset 'assets/images/registration-bg.png' }}');
+            padding: 20px;
+            max-width: 100%;
+        }
+
+        .image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .gradient-background {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gradient-background {
+                padding: 5px;
+            }
+        }
+    </style>
+    <title>Converted Image</title>
+    <link rel="shortcut icon" href="{{ asset 'assets/images/logo_only.png' }}">
+</head>
+<body>
+    <div class="container">
+        <div class="gradient-background">
+            <img src="{{ image }}" alt="Image" class="image">
+        </div>
+    </div>
+</body>
+</html>

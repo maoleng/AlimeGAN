@@ -5,7 +5,7 @@ const route = express.Router()
 
 route.get('/', ConvertController.index)
 route.post('/', ConvertController.convert)
-route.get('/result', ConvertController.showResult)
+route.get('/result/:_id', ConvertController.showResult)
 
 
 export default route

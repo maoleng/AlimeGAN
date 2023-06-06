@@ -124,11 +124,13 @@
                         <div class="form-group-single wow fadeInUp" data-wow-duration="600ms" data-wow-delay="900ms">
                             <input type="text" name="label" id="trailLink" placeholder="label your image">
                         </div>
-                        <div class="group-radio">
-                            <input type="checkbox" name="isPublic" id="readTerms">
-                            <label for="readTerms">Make it as public</label>
-                        </div>
-                        <div class="cta__group">
+                        {{#if (isAlreadyLogin)}}
+                            <div class="group-radio">
+                                <input type="checkbox" name="isPublic" id="readTerms">
+                                <label for="readTerms">Make it as public</label>
+                            </div>
+                        {{/if}}
+                        <div id="div-group_btn" class="cta__group">
                             <button id="btn-convert" class="btn btn--primary">convert now</button>
                         </div>
                     </form>
@@ -142,8 +144,14 @@
     <script>
         $(document).ready(() => {
             const btn = $('#btn-convert')
-            btn.on('click', (e) => {
-                e.preventDefault()
+            const resultId = new URLSearchParams(window.location.search).get('result')
+            if (resultId) {
+                const groupBtn = $('#div-group_btn')
+                btn.remove()
+                groupBtn.append(`<a href="/convert/result/${resultId}" class="btn btn--primary" target="_blank">see the result</a>`)
+                groupBtn.append(`<a href="/convert" class="btn btn--primary">reset</a>`)
+            }
+            btn.on('click', () => {
                 btn.addClass('disabled')
                 let text = 'Please wait'
                 setInterval(() => {

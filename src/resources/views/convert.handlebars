@@ -141,6 +141,7 @@
 </div>
 
 {{#section 'script'}}
+    <script src="{{ asset 'assets/vendor/sweetalert2/js/sweetalert2.min.js' }}"></script>
     <script>
         $(document).ready(() => {
             const btn = $('#btn-convert')
@@ -151,7 +152,19 @@
                 groupBtn.append(`<a href="/convert/result/${resultId}" class="btn btn--primary" target="_blank">see the result</a>`)
                 groupBtn.append(`<a href="/convert" class="btn btn--primary">reset</a>`)
             }
-            btn.on('click', () => {
+            btn.on('click', (e) => {
+                if ($('#i-file').val() == null) {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Please choose your image',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    })
+                    e.preventDefault()
+
+                    return null
+                }
+
                 btn.addClass('disabled')
                 let text = 'Please wait'
                 setInterval(() => {

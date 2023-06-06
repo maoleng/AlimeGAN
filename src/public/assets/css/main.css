@@ -4940,13 +4940,13 @@ i {
 .portfolio .portfolio__single-item {
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 512px;
   background-color: rgba(185, 172, 172, 0.062745098);
 }
 .portfolio .portfolio-range {
   position: relative;
-  height: 300px;
-  max-height: 300px;
+  height: 512px;
+  max-height: 512px;
 }
 .portfolio .portfolio-range .img {
   position: absolute;
@@ -4954,7 +4954,7 @@ i {
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: 450px 100%;
+  background-size: 512px 100%;
 }
 .portfolio .portfolio-range .portfolio-slides {
   position: absolute;
@@ -4975,13 +4975,13 @@ i {
   -webkit-appearance: none;
   appearance: none;
   width: 4px;
-  height: 300px;
+  height: 512px;
   background: white;
   cursor: pointer;
 }
 .portfolio .portfolio-range .portfolio-slides::-moz-range-thumb {
   width: 4px;
-  height: 300px;
+  height: 512px;
   background: white;
   cursor: pointer;
 }

@@ -1,11 +1,12 @@
 #@title Load Face2Paint model
 
+import load_model
 import torch
 from PIL import Image
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
-model = torch.hub.load("maoleng/AlimeGAN:main", "generator", device=device).eval()
-face2paint = torch.hub.load("maoleng/AlimeGAN:main", "face2paint", device=device)
+model = load_model.generator().eval()
+face2paint = load_model.face2paint()
 
 #@title Face Detector & FFHQ-style Alignment
 

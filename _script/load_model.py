@@ -1,12 +1,9 @@
 import torch
 
-
-def generator(pretrained=True, device="cpu", progress=True, check_hash=True):
+def generator(pretrained=True, device="cpu"):
     from model import Generator
-
-    release_url = "https://github.com/maoleng/AlimeGAN/raw/main/_script/weights"
     known = {
-        name: f"{release_url}/{name}.pt"
+        name: f"weights/{name}.pt"
         for name in [
             'celeba_distill', 'face_paint_512_v1', 'face_paint_512_v2', 'paprika'
         ]
@@ -16,19 +13,13 @@ def generator(pretrained=True, device="cpu", progress=True, check_hash=True):
     model = Generator().to(device)
 
     if type(pretrained) == str:
-        # Look if a known name is passed, otherwise assume it's a URL
-        ckpt_url = known.get(pretrained, pretrained)
+        model_path = known.get(pretrained, pretrained)
         pretrained = True
     else:
-        ckpt_url = known.get('face_paint_512_v2')
+        model_path = known.get('face_paint_512_v2')
 
     if pretrained is True:
-        state_dict = torch.hub.load_state_dict_from_url(
-            ckpt_url,
-            map_location=device,
-            progress=progress,
-            check_hash=check_hash,
-        )
+        state_dict = torch.load(model_path, map_location=device)
         model.load_state_dict(state_dict)
 
     return model
@@ -62,3 +53,4 @@ def face2paint(device="cpu", size=512, side_by_side=False):
         return to_pil_image(output)
 
     return face2paint
+

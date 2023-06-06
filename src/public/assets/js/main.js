@@ -318,3 +318,7 @@ function readURL(input) {
 $("#imageUpload").change(function() {
     readURL(this);
 });
+if (! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    $('a[href="/auth/redirect"]').append(' continue with google')
+}
+

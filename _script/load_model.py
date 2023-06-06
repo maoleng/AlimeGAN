@@ -3,7 +3,7 @@ import torch
 def generator(pretrained=True, device="cpu"):
     from model import Generator
     known = {
-        name: f"weights/{name}.pt"
+        name: f"_script/weights/{name}.pt"
         for name in [
             'celeba_distill', 'face_paint_512_v1', 'face_paint_512_v2', 'paprika'
         ]

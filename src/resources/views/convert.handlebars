@@ -35,74 +35,50 @@
             <div class="col-12 col-sm-6 col-xl-3">
                 <div class="quote-wrapper">
                     <div class="custom-quote__left custom-quote__left1">
-                        <div class="single">
-                            <img src="{{ asset 'assets/images/quote/one.png' }}" alt="Image">
-                        </div>
-                        <div class="single">
-                            <img src="{{ asset 'assets/images/quote/two.png' }}" alt="Image">
-                        </div>
-                        <div class="single">
-                            <img src="{{ asset 'assets/images/quote/three.png' }}" alt="Image">
-                        </div>
+                        {{#each images_1}}
+                            <div class="single">
+                                <img src="{{ this.path }}" alt="Image">
+                            </div>
+                        {{/each}}
                     </div>
                     <div class="custom-quote__left custom-quote__left2">
-                        <div class="single">
-                            <img src="{{ asset 'assets/images/quote/one.png' }}" alt="Image">
-                        </div>
-                        <div class="single">
-                            <img src="{{ asset 'assets/images/quote/two.png' }}" alt="Image">
-                        </div>
-                        <div class="single">
-                            <img src="{{ asset 'assets/images/quote/three.png' }}" alt="Image">
-                        </div>
+                        {{#each images_1}}
+                            <div class="single">
+                                <img src="{{ this.path }}" alt="Image">
+                            </div>
+                        {{/each}}
                     </div>
                     <div class=" custom-quote__left custom-quote__left3">
-                        <div class="single">
-                            <img src="{{ asset 'assets/images/quote/one.png' }}" alt="Image">
-                        </div>
-                        <div class="single">
-                            <img src="{{ asset 'assets/images/quote/two.png' }}" alt="Image">
-                        </div>
-                        <div class="single">
-                            <img src="{{ asset 'assets/images/quote/three.png' }}" alt="Image">
-                        </div>
+                        {{#each images_1}}
+                            <div class="single">
+                                <img src="{{ this.path }}" alt="Image">
+                            </div>
+                        {{/each}}
                     </div>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-xl-3">
                 <div class="quote-wrapper">
                     <div class="custom-quote__right custom-quote__right1">
-                        <div class="single">
-                            <img src="{{ asset 'assets/images/quote/four.png' }}" alt="Image">
-                        </div>
-                        <div class="single">
-                            <img src="{{ asset 'assets/images/quote/five.png' }}" alt="Image">
-                        </div>
-                        <div class="single">
-                            <img src="{{ asset 'assets/images/quote/six.png' }}" alt="Image">
-                        </div>
+                        {{#each images_2}}
+                            <div class="single">
+                                <img src="{{ this.path }}" alt="Image">
+                            </div>
+                        {{/each}}
                     </div>
                     <div class="custom-quote__right custom-quote__right2">
-                        <div class="single">
-                            <img src="{{ asset 'assets/images/quote/four.png' }}" alt="Image">
-                        </div>
-                        <div class="single">
-                            <img src="{{ asset 'assets/images/quote/five.png' }}" alt="Image">
-                        </div>
-                        <div class="single">
-                            <img src="{{ asset 'assets/images/quote/six.png' }}" alt="Image">
-                        </div>
+                        {{#each images_2}}
+                            <div class="single">
+                                <img src="{{ this.path }}" alt="Image">
+                            </div>
+                        {{/each}}
                     </div>
                     <div class="custom-quote__right custom-quote__right3">
-                        <div class="single">
-                            <img src="{{ asset 'assets/images/quote/four.png' }}" alt="Image">
-                        </div>
-                        <div class="single">
-                            <img src="{{ asset 'assets/images/quote/five.png' }}" alt="Image">
-                        </div>
-                        <div class="single">
-                            <img src="{{ asset 'assets/images/quote/six.png' }}" alt="Image">
-                        </div>
+                        {{#each images_2}}
+                            <div class="single">
+                                <img src="{{ this.path }}" alt="Image">
+                            </div>
+                        {{/each}}
                     </div>
                 </div>
             </div>
@@ -116,7 +92,7 @@
                                     <label for="imageUpload"></label>
                                 </div>
                                 <div class="avatar-preview">
-                                    <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                                    <div id="imagePreview" style="background-image: url('https://icons-for-free.com/iconfiles/png/512/cloud+upload+file+storage+upload+icon-1320190558968694328.png');">
                                     </div>
                                 </div>
                             </div>

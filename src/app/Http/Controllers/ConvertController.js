@@ -10,9 +10,21 @@ import Image from '../../Models/Image.js'
 class ConvertController extends BaseController
 {
 
-    static index(req, res)
+    static async index(req, res)
     {
-        return res.render('convert')
+        const images_1 = await Image.aggregate([
+            { $match: { isPublic: true, isShow: true } },
+            { $sample: { size: 3 } }
+        ])
+        const images_2 = await Image.aggregate([
+            { $match: { isPublic: true, isShow: true } },
+            { $sample: { size: 3 } }
+        ])
+
+        return res.render('convert', {
+            images_1: images_1,
+            images_2: images_2,
+        })
     }
 
     static async convert(req, res)

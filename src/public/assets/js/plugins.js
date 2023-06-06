@@ -1,12 +1,6 @@
 /* ==============
  ========= js documentation ==========================
 
- * theme name: Photodit
- * version: 1.0
- * description: Clipping Path Service Html Template
- * author: Hugebinary
- * author-url: https://themeforest.net/user/hugebinary
-
     ==================================================
 
      01. init wow js

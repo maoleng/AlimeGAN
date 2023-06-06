@@ -58,7 +58,7 @@ class ConvertController extends BaseController
         };
         const formData = new FormData()
         formData.append('a', fs.createReadStream(path))
-        const response = await axios.post(`https://discord.com/api/v9/channels/981061995719692335/messages`, formData, {headers})
+        const response = await axios.post(`https://discord.com/api/v9/channels/${process.env.CHANNEL_ID}/messages`, formData, {headers})
 
         return response.data.attachments[0].url
     }

@@ -85,7 +85,7 @@
             <div class="col-12 col-xl-6">
                 <div class="trial__form">
                     <form action="/convert" method="post" enctype="multipart/form-data">
-                        <div class="drag">
+                        <div id="div-image" class="drag">
                             <div class="avatar-upload">
                                 <div class="avatar-edit">
                                     <input name="file" type="file" id="imageUpload" accept=".png, .jpg, .jpeg" />
@@ -97,7 +97,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group-single wow fadeInUp" data-wow-duration="600ms" data-wow-delay="900ms">
+                        <div id="div-label" class="form-group-single wow fadeInUp" data-wow-duration="600ms" data-wow-delay="900ms">
                             <input type="text" name="label" id="trailLink" placeholder="label your image">
                         </div>
                         {{#if (isAlreadyLogin)}}
@@ -124,12 +124,15 @@
             const resultId = new URLSearchParams(window.location.search).get('result')
             if (resultId) {
                 const groupBtn = $('#div-group_btn')
+                $('#div-label').remove()
+                $('#div-image').remove()
                 btn.remove()
                 groupBtn.append(`<a href="/convert/result/${resultId}" class="btn btn--primary" target="_blank">see the result</a>`)
-                groupBtn.append(`<a href="/convert" class="btn btn--primary">reset</a>`)
+                groupBtn.append(`<a href="/convert" class="btn btn--primary">convert other image</a>`)
             }
             btn.on('click', (e) => {
-                if ($('#imageUpload').val() == null) {
+                const image = $('#imageUpload').val()
+                if (image == null || image === '') {
                     Swal.fire({
                         title: 'Error!',
                         text: 'Please choose your image',
@@ -138,7 +141,7 @@
                     })
                     e.preventDefault()
 
-                    return null
+                    return
                 }
 
                 btn.addClass('disabled')

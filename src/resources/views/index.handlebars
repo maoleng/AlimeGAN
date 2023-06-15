@@ -549,3 +549,13 @@
         </div>
     </div>
 </div>
+
+{{#section 'script' }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.12/sweetalert2.all.min.js" integrity="sha512-J8fMSsNsuWKj3xd1PRJ7M328sNj4jzUm2uYFI/spmO29rvGJvjsYXBTCun7OFCaRMeDowiEFGdXrkbBlCL5myw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $( document ).ready(() => {
+            {{#notifyError}}{{/notifyError}}
+        })
+
+    </script>
+{{/section}}

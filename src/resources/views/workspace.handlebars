@@ -1,0 +1,104 @@
+{{#section 'style' }}
+    <style type="text/css">
+        {{#each images}}
+            .portfolio .img-{{ @index }} .before-{{ @index }} {
+                background-image: url('{{ this.imageOriginalPath }}');
+            }
+            .portfolio .img-{{ @index }} .after-{{ @index }} {
+                background-image: url('{{ this.path }}');
+                width: 50%;
+            }
+        {{/each }}
+    </style>
+{{/section}}
+
+<section class="cmn-banner section gsap-fix-top">
+    <div class="container">
+        <div class="row gaper align-items-center">
+            <div class="col-12 col-md-8">
+                <h2 class="h2 title wow fadeInUp" data-wow-duration="600ms" data-wow-delay="1200ms">Gallery</h2>
+            </div>
+            <div class="col-12 col-md-4">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-md-end wow fadeInUp" data-wow-duration="600ms" data-wow-delay="1200ms">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Gallery
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="left-triangle">
+        <div class='triangle'></div>
+    </div>
+    <div class="right-triangle">
+        <div class='triangle'></div>
+        <div class="right-alt">
+        </div>
+    </div>
+</section>
+<!-- ==== / banner end ==== -->
+<!-- ==== blog section start ==== -->
+<section class="section pricing-two">
+    <div class="container ">
+        <div class="row gaper portfolio">
+            {{#each images}}
+            <div class="col-12 col-md-6 col-lg-6 col-xxl-4">
+                <div class="pricing-two__single wow fadeInUp" data-wow-duration="600ms" data-wow-delay="600ms" style="visibility: visible; animation-duration: 600ms; animation-delay: 600ms; animation-name: fadeInUp;">
+                    <div class="meta">
+                        <div class="content">
+                            <h2 class="h2 title">{{ this.label }}</h2>
+                        </div>
+                        <div class="thumb">
+                            <img style="width: 50px" src="{{#if this.isPublic }} {{ asset 'assets/images/show.png' }} {{else }} {{ asset 'assets/images/hide.png' }} {{/if}} " alt="Image">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-12 col-md-6 col-xl-12 grid-item">
+                        <div class="portfolio__single-item">
+                            <div class="portfolio-range img-{{ @index }}">
+                                <div class='img before-{{ @index }}'></div>
+                                <div class='img after-{{ @index }}'></div>
+                                <input type="range" min="1" max="100" value="50" class="portfolio-slides" name='portfolio-slider' id="img-slider-{{ @index }}">
+                                <div class='portfolio-slider-button img-slider-button-{{ @index }}'></div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <a href="{{ this.path }}" target="_blank" class="btn btn--secondary">View converted</a>
+                    <form action="/workspace/{{ this._id }}?_method=PUT" method="POST" style="display: inline-block">
+                        <button class="btn btn-outline-dark">
+                            {{#if this.isPublic }}
+                                Make private
+                            {{else }}
+                                Make public
+                            {{/if}}
+                        </button>
+                    </form>
+                </div>
+            </div>
+            {{/each }}
+        </div>
+    </div>
+</section>
+
+{{#section 'script' }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.12/sweetalert2.all.min.js" integrity="sha512-J8fMSsNsuWKj3xd1PRJ7M328sNj4jzUm2uYFI/spmO29rvGJvjsYXBTCun7OFCaRMeDowiEFGdXrkbBlCL5myw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $( document ).ready(() => {
+            {{#notifySuccess}}{{/notifySuccess}}
+            {{#each images}}
+                $("#img-slider-{{ @index }}").on("input change", (e) => {
+                    const slider = e.target.value;
+
+                    $(".after-{{ @index }}").css("width", `${slider}%`);
+
+                    $(".img-slider-button-{{ @index }}").css("left", `calc(${slider}% - 18px)`);
+                })
+            {{/each}}
+        })
+
+    </script>
+{{/section}}

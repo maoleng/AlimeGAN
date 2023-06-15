@@ -21,7 +21,7 @@ function boosterHandlebars(app)
                     return null
                 },
                 notifySuccess: () => {
-                    if (req.session.success !== null) {
+                    if (req.session.success != null) {
                         const value = req.session.success
                         req.session.success = null
 
@@ -31,6 +31,21 @@ function boosterHandlebars(app)
                               text: '${value}',
                               icon: 'success',
                               confirmButtonText: 'Cool'
+                            })
+                        `
+                    }
+                },
+                notifyError: () => {
+                    if (req.session.error != null) {
+                        const value = req.session.error
+                        req.session.error = null
+
+                        return `
+                            Swal.fire({
+                              title: 'Error!',
+                              text: '${value}',
+                              icon: 'error',
+                              confirmButtonText: 'OK'
                             })
                         `
                     }

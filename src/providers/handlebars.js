@@ -1,5 +1,4 @@
 import handlebars from 'express-handlebars'
-import path from 'path'
 
 function boosterHandlebars(app)
 {
@@ -20,6 +19,21 @@ function boosterHandlebars(app)
                     }
                     this._sections[name] = options.fn(this)
                     return null
+                },
+                notifySuccess: () => {
+                    if (req.session.success !== null) {
+                        const value = req.session.success
+                        req.session.success = null
+
+                        return `
+                            Swal.fire({
+                              title: 'Success!',
+                              text: '${value}',
+                              icon: 'success',
+                              confirmButtonText: 'Cool'
+                            })
+                        `
+                    }
                 },
             }
         })
